@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ForgotPassword = () => {
     return (
-        <div className='bg-primary'>
+        <div className='page-bg'>
             <div className="layoutAuthentication">
                 <div id="layoutAuthentication_content">
                     <main style={{height:"100vh"}}>

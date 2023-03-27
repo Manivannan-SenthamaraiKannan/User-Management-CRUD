@@ -67,7 +67,7 @@ const Dashboard = () => {
                                             <nav class="sb-sidenav-menu-nested nav">
                                                 <Link class="nav-link" to="/login">Login</Link>
                                                 <Link class="nav-link" to="/register">Register</Link>
-                                                <Link class="nav-link" to="/forgotpassword">Forgot Password</Link>
+                                                <Link class="nav-link" to="/password">Forgot Password</Link>
                                             </nav>
                                         </div>
                                     </nav>

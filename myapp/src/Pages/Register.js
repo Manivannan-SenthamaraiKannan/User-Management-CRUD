@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
-        <div className='bg-primary'>
+        <div className='page-bg'>
             <div className='layoutAuthentication'>
                 <div id="layoutAuthentication">
                     <div id="layoutAuthentication_content">
