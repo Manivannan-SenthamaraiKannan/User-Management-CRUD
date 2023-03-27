@@ -1,4 +1,18 @@
-.limiter {
+.page-bg {
+  display: block;
   width: 100%;
-  margin: 0 auto;
+  height: 100vh;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+}
+
+.bg-login-image {
+  background: url("../Images/4957136.jpg");
+  background-position: center;
+  background-size: cover;
 }
