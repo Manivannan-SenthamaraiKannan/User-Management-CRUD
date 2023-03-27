@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Gretchen Reed",
+    "phone": "1-736-464-5043",
+    "country": "Colombia",
+    "region": "East Region"
+  },
+  {
+    "id": 2,
+    "name": "Orli Gardner",
+    "phone": "(158) 332-2622",
+    "country": "Russian Federation",
+    "region": "Ulster"
+  },
+  {
+    "id": 3,
+    "name": "Irma Monroe",
+    "phone": "(385) 550-0667",
+    "country": "Nigeria",
+    "region": "Namen"
+  },
+  {
+    "id": 4,
+    "name": "Octavius Holloway",
+    "phone": "1-912-847-0838",
+    "country": "Ireland",
+    "region": "Castilla - La Mancha"
+  },
+  {
+    "id": 5,
+    "name": "Amethyst Dyer",
+    "phone": "1-581-669-0040",
+    "country": "France",
+    "region": "Bali"
+  },
+  {
+    "id": 6,
+    "name": "Kylan Houston",
+    "phone": "1-117-441-4468",
+    "country": "Sweden",
+    "region": "Gangwon"
+  },
+  {
+    "id": 7,
+    "name": "Idola Rosales",
+    "phone": "1-892-443-3147",
+    "country": "Turkey",
+    "region": "Minas Gerais"
+  },
+  {
+    "id": 8,
+    "name": "Azalia Martinez",
+    "phone": "(267) 384-3452",
+    "country": "Norway",
+    "region": "Vienna"
+  },
+  {
+    "id": 9,
+    "name": "Griffith Goodwin",
+    "phone": "(426) 919-3852",
+    "country": "Canada",
+    "region": "Chocó"
+  },
+  {
+    "id": 10,
+    "name": "Yoshio Morton",
+    "phone": "1-781-245-9213",
+    "country": "United Kingdom",
+    "region": "Eastern Visayas"
+  }
+]

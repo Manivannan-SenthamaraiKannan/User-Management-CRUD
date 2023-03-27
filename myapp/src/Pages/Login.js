@@ -1,52 +1,45 @@
-import Logo from '../Assets/Images/Logo.webp';
-import '../Assets/Styles/Login.css'
+import '../App.css'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
     return (
-        <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100">
-                    <div class="login100-pic js-tilt" data-tilt="" style={{"will-change": "transform", "transform": "perspective(300px) rotateX(0deg) rotateY(0deg)"}}>
-                        <img src={Logo} alt="IMG"/>
-                    </div>
-                    <form class="login100-form validate-form">
-                        <span class="login100-form-title">
-                            Member Login
-                        </span>
-                        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email" placeholder="Email"/>
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </span>
+        <div className='bg-primary'>
+            <div id="layoutAuthentication">
+                <div id="layoutAuthentication_content">
+                    <main>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-5">
+                                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                    <label for="inputEmail">Email address</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                    <label for="inputPassword">Password</label>
+                                                </div>
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                                    <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                    <Link class="small" to='/password'>Forgot Password?</Link>
+                                                    <Link class="btn btn-primary" href='/Dashboard'>Login</Link>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="card-footer text-center py-3">
+                                            <div class="small"><Link to='/register'>Need an account? Sign up!</Link></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="Password"/>
-                                <span class="focus-input100"></span>
-                                <span class="symbol-input100">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                </span>
-                        </div>
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Login
-                            </button>
-                        </div>
-                        <div class="text-center p-t-12">
-                            <span class="txt1">
-                                Forgot
-                            </span>
-                            <a class="txt2" href="#!">
-                                Username / Password?
-                            </a>
-                        </div>
-                        <div class="text-center p-t-136">
-                            <a class="txt2" href="#!">
-                                Create your Account
-                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </form>
+                    </main>
                 </div>
             </div>
         </div>
