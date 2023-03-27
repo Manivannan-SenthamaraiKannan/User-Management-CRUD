@@ -1,5 +1,5 @@
 import '../Assets/Styles/Login.css'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -16,31 +16,51 @@ const Login = () => {
                                     <div class="col-lg-6">
                                         <div class="p-5">
                                             <div class="text-center">
-                                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                                <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                             </div>
                                             <form>
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                                    <input type="email" class="form-control" placeholder='Type your Username' id="exampleInputEmail1" />
                                                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1" />
+                                                    <input type="password" placeholder='Type your Password' class="form-control" id="exampleInputPassword1" />
                                                 </div>
-                                                <div class="mb-3 form-check">
-                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                                    <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                                                <div class="mb-3 form-check d-flex justify-content-end align-items-center">
+                                                    <Link class="small" to="/forgot-password">Forgot Password?</Link>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary d-flex align-items-center justify-contents-center">Login</button>
+                                                <div>
+                                                    <Link class="small nav-link login-button" to="/dashboard">Login</Link>
+                                                </div>
                                             </form>
-                                            <hr />
-                                            {/* <div class="text-center">
-                                                <Link class="small" to="/forgot-password">Forgot Password?</Link>
+
+                                            {/* Social Login */}
+                                            <div className='py-3'>
+                                                <h6><span>or signin using</span></h6>
+                                                <div className='d-flex justify-content-center align-items-center gap-3'>
+                                                    <div>
+                                                        <button type='button' className='btn btn-danger signin'><i class="bi bi-google"></i></button>
+                                                    </div>
+                                                    <div>
+                                                        <button type='button' className='btn btn-primary signin'><i class="bi bi-facebook"></i></button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="text-center">
-                                                <Link class="small" to="/register">Create an Account!</Link>
-                                            </div> */}
+                                            {/* Signup */}
+                                            <div className='py-3'>
+                                                <h6><span>or signup</span></h6>
+                                                <div className='d-flex justify-content-center align-items-center gap-3'>
+                                                    <div>
+                                                        <button type='button' className='btn btn-danger signin'><i class="bi bi-google"></i></button>
+                                                    </div>
+                                                    <div>
+                                                        <button type='button' className='btn btn-primary signin'><i class="bi bi-facebook"></i></button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

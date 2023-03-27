@@ -65,9 +65,9 @@ const Dashboard = () => {
                                         </a>
                                         <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                             <nav class="sb-sidenav-menu-nested nav">
-                                                <a class="nav-link" href="login.html">Login</a>
-                                                <a class="nav-link" href="register.html">Register</a>
-                                                <a class="nav-link" href="password.html">Forgot Password</a>
+                                                <Link class="nav-link" to="/login">Login</Link>
+                                                <Link class="nav-link" to="/register">Register</Link>
+                                                <Link class="nav-link" to="/forgotpassword">Forgot Password</Link>
                                             </nav>
                                         </div>
                                     </nav>
