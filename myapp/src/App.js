@@ -6,6 +6,7 @@ import ForgotPassword from './Pages/ForgotPassword';
 import Register from './Pages/Register';
 import Dashboard from './Dashboard';
 import Users from './Components/Users';
+import EditUser from './Components/EditUsers';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/password' element={<ForgotPassword />} />
           <Route path='/register' element={<Register />} />
           <Route path='/user' element={<Users />} />
+          <Route path='/edit-user' element={<EditUser />} />
         </Routes>
       </div>
     </Router>

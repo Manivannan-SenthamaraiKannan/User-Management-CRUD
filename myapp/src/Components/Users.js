@@ -1,15 +1,28 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link } from 'react-router-dom'
+import { useState } from "react";
+import EditUser from "./EditUsers";
 
 const Users = () => {
     const pageHeading = "Users";
 
+    const [isShown, setIsShown] = useState(false);
+    const [editUser, setEditUser] = useState({
+        ID: '',
+        NAME: '',
+        PHONE: '',
+        REGION: '',
+        COUNTRY: ''
+    })
+
     var tbldata = require("../Assets/Data/UserData.json")
-    //     tbldata.map((data) => {
-    //         return (
-    //             console.log(data.name) 
-    //         )
-    // })
+
+    const handleEditUser = (id, name, phone, region, country) => {
+        console.log(id, name, phone, region, country)
+        setEditUser({ ...editUser, ID: id, NAME: name, PHONE: phone, REGION: region, COUNTRY: country })
+        setIsShown(true);
+        console.log(editUser)
+    }
 
     return (
         <div className='sb-nav-fixed'>
@@ -89,7 +102,7 @@ const Users = () => {
                 <div id="layoutSidenav_content">
                     <main>
                         <div className="container-fluid">
-                            <div class="d-sm-flex align-items-center justify-content-between mb-5">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-3">
                                 <h1 class="h3 mb-0 text-gray-400">{pageHeading}</h1>
                             </div>
                             {/* user table */}
@@ -105,14 +118,20 @@ const Users = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {tbldata.map((data) => {
+                                        {tbldata.map((data, key) => {
                                             return (
-                                                <tr>
+                                                <tr key={key}>
                                                     <td>{data.id}</td>
                                                     <td>{data.name}</td>
                                                     <td>{data.phone}</td>
                                                     <td>{data.region}</td>
                                                     <td>{data.country}</td>
+                                                    <td><Link to="/edit-user"><button type="button" className="btn btn-light"
+                                                        onClick={() => {
+                                                            handleEditUser(parseInt(data.id), data.name, data.phone, data.region, data.country)
+                                                        }}>
+                                                        <i class="bi bi-pencil-square"></i></button></Link></td>
+                                                    <td><button type="button" className="btn btn-danger"><i class="bi bi-trash"></i></button></td>
                                                 </tr>)
                                         })}
                                     </tbody>
@@ -131,6 +150,7 @@ const Users = () => {
                     </footer>
                 </div>
             </div>
+            {isShown && <EditUser edituser={editUser} />}
         </div>
     )
 }
