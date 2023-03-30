@@ -1,7 +1,11 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link } from 'react-router-dom'
+import Form from "./Form";
 
-const EditUser = () => {
+const EditUser = (props) => {
+    const pageHeading = "Edit User";
+    const { ID, NAME, PHONE, REGION, COUNTRY } = props;
+
     return (
         <div className='sb-nav-fixed'>
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -79,6 +83,16 @@ const EditUser = () => {
                 {/* Page Content */}
                 <div id="layoutSidenav_content">
                     <main>
+                        <div className="container-fluid">
+                            {/* Component Heading */}
+                            <div class="d-sm-flex align-items-center justify-content-between mb-3">
+                                <h1 class="h3 mb-0 text-gray-400">{pageHeading}</h1>
+                            </div>
+                            {/* Edit User Content */}
+                            <div className="container">
+                                <Form />
+                            </div>
+                        </div>
                     </main>
                     {/* Enf of page content */}
                     <footer class="py-3 bg-light mt-auto">
