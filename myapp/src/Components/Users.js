@@ -1,29 +1,21 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Link } from 'react-router-dom'
-import { useState } from "react";
-import EditUser from "./EditUsers";
+import { useNavigate, Link } from 'react-router-dom'
+// import { useState } from "react";
 import '../Assets/Styles/Users.css'
 
-const Users = () => {
+const Users = (props) => {
     const pageHeading = "Users";
-
-    const [isShown, setIsShown] = useState(false);
-    const [editUser, setEditUser] = useState({
-        ID: '',
-        NAME: '',
-        PHONE: '',
-        REGION: '',
-        COUNTRY: ''
-    })
+    const navigate = useNavigate();
 
     var tbldata = require("../Assets/Data/UserData.json")
 
-    const handleEditUser = (id, name, phone, region, country) => {
-        console.log(id, name, phone, region, country)
-        setEditUser({ ...editUser, ID: id, NAME: name, PHONE: phone, REGION: region, COUNTRY: country })
-        setIsShown(true);
-        console.log(editUser)
+    const handleEditUser = (data) => {
+        props.setEditUser(data);
+        // console.log(data);
+        navigate("/edituser")
     }
+
+
 
     return (
         <div className='sb-nav-fixed'>
@@ -135,11 +127,11 @@ const Users = () => {
                                                     <td>{data.phone}</td>
                                                     <td>{data.region}</td>
                                                     <td>{data.country}</td>
-                                                    <td><Link to="/edituser"><button type="button" className="btn btn-light"
+                                                    <td><button type="button" className="btn btn-light"
                                                         onClick={() => {
-                                                            handleEditUser(data.id, data.name, data.phone, data.region, data.country)
+                                                            handleEditUser(data);
                                                         }}>
-                                                        <i class="bi bi-pencil-square"></i></button></Link></td>
+                                                        <i class="bi bi-pencil-square"></i></button></td>
                                                     <td><button type="button" className="btn btn-danger"><i class="bi bi-trash"></i></button></td>
                                                 </tr>)
                                         })}
@@ -159,7 +151,6 @@ const Users = () => {
                     </footer>
                 </div>
             </div>
-            {isShown && <EditUser edituser={editUser} />}
         </div>
     )
 }

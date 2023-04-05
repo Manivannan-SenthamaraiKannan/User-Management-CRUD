@@ -1,11 +1,14 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link } from 'react-router-dom'
-import Form from "./Form";
 
 const EditUser = (props) => {
     const pageHeading = "Edit User";
-    const { ID, NAME, PHONE, REGION, COUNTRY } = props;
 
+    // const [state, setState] = useState();
+
+    const handleSubmit = () => {
+
+    }
     return (
         <div className='sb-nav-fixed'>
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -90,7 +93,25 @@ const EditUser = (props) => {
                             </div>
                             {/* Edit User Content */}
                             <div className="container">
-                                <Form />
+                                <form onSubmit={handleSubmit}>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Name</label>
+                                        <input type="text" class="form-control" defaultValue={props.editUser.name} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Phone</label>
+                                        <input type="text" class="form-control" defaultValue={props.editUser.phone} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Region</label>
+                                        <input type="text" class="form-control" defaultValue={props.editUser.region} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Country</label>
+                                        <input type="text" class="form-control" defaultValue={props.editUser.country} />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
                             </div>
                         </div>
                     </main>
