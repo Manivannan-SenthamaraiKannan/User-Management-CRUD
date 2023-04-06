@@ -1,13 +1,22 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { useState } from "react";
 import { Link } from 'react-router-dom'
 
 const EditUser = (props) => {
     const pageHeading = "Edit User";
 
     // const [state, setState] = useState();
+    const [userDetails, setUserDetails] = useState();
 
-    const handleSubmit = () => {
+    const handleUserDetails = (value) => {
+        return setUserDetails((details) => {
+            return { ...userDetails, ...value }
+        })
+    }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(userDetails);
     }
     return (
         <div className='sb-nav-fixed'>
@@ -96,19 +105,23 @@ const EditUser = (props) => {
                                 <form onSubmit={handleSubmit}>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Name</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.name} />
+                                        <input type="text" class="form-control" defaultValue={props.editUser.name}
+                                            onChange={(e) => { handleUserDetails({ name: e.target.value }) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label" >Phone</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.phone} />
+                                        <input type="text" class="form-control" defaultValue={props.editUser.phone}
+                                            onChange={(e) => { handleUserDetails({ phone: e.target.value }) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label" >Region</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.region} />
+                                        <input type="text" class="form-control" defaultValue={props.editUser.region}
+                                            onChange={(e) => { handleUserDetails({ region: e.target.value }) }} />
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label" >Country</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.country} />
+                                        <input type="text" class="form-control" defaultValue={props.editUser.country}
+                                            onChange={(e) => { handleUserDetails({ country: e.target.value }) }} />
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
