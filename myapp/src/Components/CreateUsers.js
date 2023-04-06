@@ -1,10 +1,25 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Link } from 'react-router-dom';
-import Form from './Form';
-import '../Assets/Styles/Users.css'
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import '../Assets/Styles/Users.css';
+
 const CreateUser = () => {
 
     const pageHeading = "Create New User";
+    // const navigate = useNavigate();
+
+    const [createUser, setCreateUser] = useState();
+
+    const handleUser = (value) => {
+        return setCreateUser((details) => {
+            return { ...createUser, ...value }
+        })
+    }
+
+    const submitUser = (e) => {
+        e.preventDefault();
+        // navigate('/user');
+    }
 
     return (
         <div className='sb-nav-fixed'>
@@ -90,8 +105,32 @@ const CreateUser = () => {
                             </div>
                             {/* Create-User Content */}
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <Form />
+                                <form onSubmit={submitUser}>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Name</label>
+                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ name: e.target.value }) }} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Phone</label>
+                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ phone: e.target.value }) }} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Region</label>
+                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ region: e.target.value }) }} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Country</label>
+                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ country: e.target.value }) }} />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
                             </div>
+                        </div>
+                        <div>
+                            {/* <p>Name:{createUser.name}</p>
+                            <p>Phone:{createUser.phone}</p>
+                            <p>Region:{createUser.region}</p>
+                            <p>Country:{createUser.country}</p> */}
                         </div>
                     </main>
                     {/* Enf of page content */}
@@ -105,6 +144,7 @@ const CreateUser = () => {
                     </footer>
                 </div>
             </div>
+
         </div>
     )
 }
