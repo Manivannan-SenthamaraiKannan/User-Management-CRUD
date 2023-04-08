@@ -11,11 +11,14 @@ import CreateUser from './Components/CreateUsers';
 import { useState } from 'react'
 
 function App() {
+  // edit-user
   const [edituser, setEditUser] = useState({
     ID: '0',
     NAME: 'dummy',
     PHONE: "123456789",
   });
+
+  const [createUser, setCreateUser] = useState();
 
   return (
     <Router>
@@ -25,9 +28,9 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/password' element={<ForgotPassword />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/user' element={<Users setEditUser={setEditUser} />} />
+          <Route path='/user' element={<Users setEditUser={setEditUser} createUser={createUser} />} />
           <Route path='/edituser' element={<EditUser editUser={edituser} />} />
-          <Route path='/createuser' element={<CreateUser />} />
+          <Route path='/createuser' element={<CreateUser setCreateUser={setCreateUser} />} />
         </Routes>
       </div>
     </Router>

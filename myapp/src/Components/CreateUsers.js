@@ -3,23 +3,31 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import '../Assets/Styles/Users.css';
 
-const CreateUser = () => {
+const CreateUser = (props) => {
+    console.log(props);
 
     const pageHeading = "Create New User";
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const [createUser, setCreateUser] = useState();
+    // const [createUser, setCreateUser] = useState();
+
+    // const handleUser = (value) => {
+    //     return setCreateUser((details) => {
+    //         return { ...createUser, ...value }
+    //     })
+    // }
 
     const handleUser = (value) => {
-        return setCreateUser((details) => {
-            return { ...createUser, ...value }
+        return props.setCreateUser((detail) => {
+            return { ...detail, ...value }
         })
     }
 
-    const submitUser = (e) => {
+    const submitHandeller = (e) => {
         e.preventDefault();
-        // navigate('/user');
+        navigate('/user')
     }
+
 
     return (
         <div className='sb-nav-fixed'>
@@ -105,7 +113,7 @@ const CreateUser = () => {
                             </div>
                             {/* Create-User Content */}
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <form onSubmit={submitUser}>
+                                <form>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label" >Name</label>
                                         <input type="text" class="form-control" onChange={(e) => { handleUser({ name: e.target.value }) }} />
@@ -122,15 +130,9 @@ const CreateUser = () => {
                                         <label for="exampleInputPassword1" class="form-label" >Country</label>
                                         <input type="text" class="form-control" onChange={(e) => { handleUser({ country: e.target.value }) }} />
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary" onClick={submitHandeller}>Submit</button>
                                 </form>
                             </div>
-                        </div>
-                        <div>
-                            {/* <p>Name:{createUser.name}</p>
-                            <p>Phone:{createUser.phone}</p>
-                            <p>Region:{createUser.region}</p>
-                            <p>Country:{createUser.country}</p> */}
                         </div>
                     </main>
                     {/* Enf of page content */}

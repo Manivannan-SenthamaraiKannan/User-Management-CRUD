@@ -7,7 +7,7 @@ const Users = (props) => {
     const pageHeading = "Users";
     const navigate = useNavigate();
 
-    var tbldata = require("../Assets/Data/UserData.json")
+    // var tbldata = require("../Assets/Data/UserData.json")
 
     const handleEditUser = (data) => {
         props.setEditUser(data);
@@ -119,7 +119,7 @@ const Users = (props) => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {tbldata.map((data, key) => {
+                                        {/* {tbldata.map((data, key) => {
                                             return (
                                                 <tr key={key}>
                                                     <td>{data.id}</td>
@@ -134,7 +134,19 @@ const Users = (props) => {
                                                         <i class="bi bi-pencil-square"></i></button></td>
                                                     <td><button type="button" className="btn btn-danger"><i class="bi bi-trash"></i></button></td>
                                                 </tr>)
-                                        })}
+                                        })} */}
+                                        <tr>
+                                            <td>{props.createUser.name}</td>
+                                            <td>{props.createUser.phone}</td>
+                                            <td>{props.createUser.region}</td>
+                                            <td>{props.createUser.country}</td>
+                                            <td><button type="button" className="btn btn-light"
+                                                onClick={() => {
+                                                    handleEditUser(props.createUser);
+                                                }}>
+                                                <i class="bi bi-pencil-square"></i></button></td>
+                                            <td><button type="button" className="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
