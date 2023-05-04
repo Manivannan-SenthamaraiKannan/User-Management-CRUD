@@ -1,11 +1,28 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import axios from 'axios'
 
-const EditUser = (props) => {
-    console.log(props.editUser)
+const EditUser = ({editUser}) => {
+    console.log(editUser)
     const pageHeading = "Edit User";
+    const [editDetail, setEditDetail] = useState({});
+    const API = "https://6452fa51e9ac46cedf1afd61.mockapi.io"
 
-    const handleUserDetails = () => {
+    useEffect(() => {
+        getUsersById();
+    }, []);
+
+    const getUsersById = () => {
+        axios.get(`${API}/user` + parseInt(editUser)).then((res) => {
+            if (res.status === 401) {
+                console.log("Data Not Found");
+            }
+            console.log(res.data);
+        });
+    };
+
+    const handleUserDetails = () =>{
 
     }
 
@@ -93,29 +110,38 @@ const EditUser = (props) => {
                             </div>
                             {/* Edit User Content */}
                             <div className="container">
-                                <form>
-                                    {/* <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Name</label>
-                                        <input type="text" class="form-control" defaultValue={
-                                            onChange={(e) => { handleUserDetails({ name: e.target.value }) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label" >Phone</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.phone}
-                                            onChange={(e) => { handleUserDetails({ phone: e.target.value }) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label" >Region</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.region}
-                                            onChange={(e) => { handleUserDetails({ region: e.target.value }) }} />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label" >Country</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.country}
-                                            onChange={(e) => { handleUserDetails({ country: e.target.value }) }} />
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button> */}
-                                </form>
+                                {/* {
+                                    editDetail.map((data) => {
+                                        return (
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">ID</label>
+                                                    <input type="text" class="form-control" defaultValue={ data.id} disabled/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label" >Image</label>
+                                                    <input type="text" class="form-control" defaultValue={data.image} disabled />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label" >Name</label>
+                                                    <input type="text" class="form-control" defaultValue={data.name}
+                                                        onChange={(e) => { handleUserDetails({ name: e.target.value }) }} />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label" >Email</label>
+                                                    <input type="text" class="form-control" defaultValue={data.email}
+                                                        onChange={(e) => { handleUserDetails({ Email: e.target.value }) }} />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label" >Age</label>
+                                                    <input type="text" class="form-control" defaultValue={data.age}
+                                                        onChange={(e) => { handleUserDetails({ age: e.target.value }) }} />
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                            )                                        
+                                    })
+                                } */}
                             </div>
                         </div>
                     </main>
