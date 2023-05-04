@@ -48,7 +48,7 @@ const Dashboard = () => {
                                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <Link class="nav-link" to="/user">Users</Link>
-                                        <Link class="nav-link" to="/createuser">Create-users</Link>
+                                        <Link class="nav-link" to="/createuser/:id">Create-users</Link>
                                         <Link class="nav-link" to="/edituser">Edit-users</Link>
                                     </nav>
                                 </div>

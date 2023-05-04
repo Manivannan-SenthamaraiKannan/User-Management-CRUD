@@ -1,20 +1,41 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { useNavigate, Link } from 'react-router-dom'
-// import { useState } from "react";
-import '../Assets/Styles/Users.css'
+import { useNavigate, Link } from 'react-router-dom';
+import '../Assets/Styles/Users.css';
+import axios from "axios";
+import React from "react";
+import { useState, useEffect } from "react";
 
 const Users = (props) => {
+    const API = "https://6452fa51e9ac46cedf1afd61.mockapi.io"
     const pageHeading = "Users";
     const navigate = useNavigate();
+    const [user, setUser] = useState([]);
 
-    // var tbldata = require("../Assets/Data/UserData.json")
+    useEffect(() => {
+        getUsers();
+    }, []);
 
-    const handleEditUser = (data) => {
-        props.setEditUser(data);
-        // console.log(data);
+    const getUsers = () => {
+        axios.get(`${API}/user`).then((res) => {
+            if (res.status === 401) {
+                console.log("Data Not Found");
+            }
+            setUser(res.data);
+        });
+    };
+
+    const handleEditUser = (id) => {
+        props.setEditUser(id);
         navigate("/edituser")
     }
 
+    const handleDelete = (id) => {
+        axios.delete(`${API}/user/` + id).then((res) => {
+            if (res.status === 200) {
+                getUsers();
+            }
+        });
+    };
 
 
     return (
@@ -63,7 +84,7 @@ const Users = (props) => {
                                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <Link class="nav-link" to="/user">Users</Link>
-                                        <Link class="nav-link" to="/createuser">Create-users</Link>
+                                        <Link class="nav-link" to="/createuser/:id">Create-users</Link>
                                         <Link class="nav-link" to="/edituser">Edit-users</Link>
                                     </nav>
                                 </div>
@@ -100,7 +121,7 @@ const Users = (props) => {
                             </div>
                             {/* Create user */}
                             <div className="d-flex justify-content-end align-items-center createuser">
-                                <Link to='/createuser' >
+                                <Link to='/createuser/:id' >
                                     <button type="button" className="btn btn-primary"><i class="bi bi-plus"></i> Create User</button>
                                 </Link>
                             </div>
@@ -110,43 +131,45 @@ const Users = (props) => {
                                     <thead className="thead-dark">
                                         <tr>
                                             <th scope="col">ID</th>
+                                            <th scope="col">Image</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Phone</th>
-                                            <th scope="col">Region</th>
-                                            <th scope="col">Country</th>
+                                            <th scope="col">Age</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col">Modify</th>
                                             <th scope="col">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/* {tbldata.map((data, key) => {
-                                            return (
-                                                <tr key={key}>
+                                        {
+                                            user.map((data) => {
+                                                return (<tr>
                                                     <td>{data.id}</td>
+                                                    <td><img src={data.image} alt="avatar" style={{ height: "64px", width: "64px" }} /></td>
                                                     <td>{data.name}</td>
-                                                    <td>{data.phone}</td>
-                                                    <td>{data.region}</td>
-                                                    <td>{data.country}</td>
+                                                    <td>{data.age}</td>
+                                                    <td>{data.email}</td>
                                                     <td><button type="button" className="btn btn-light"
                                                         onClick={() => {
-                                                            handleEditUser(data);
+                                                            handleEditUser(data.id);
                                                         }}>
                                                         <i class="bi bi-pencil-square"></i></button></td>
-                                                    <td><button type="button" className="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+                                                    <td><button type="button" className="btn btn-danger" onClick={() => { handleDelete(data.id) }}><i class="bi bi-trash"></i></button></td>
                                                 </tr>)
-                                        })} */}
-                                        <tr>
-                                            <td>{props.createUser.name}</td>
-                                            <td>{props.createUser.phone}</td>
-                                            <td>{props.createUser.region}</td>
-                                            <td>{props.createUser.country}</td>
+                                            })
+                                        }
+                                        {/* <tr>
+                                            <td>{user.id}</td>
+                                            <td>{user.image}</td>
+                                            <td>{user.name}</td>
+                                            <td>{user.age}</td>
+                                            <td>{user.email}</td>
                                             <td><button type="button" className="btn btn-light"
                                                 onClick={() => {
-                                                    handleEditUser(props.createUser);
+                                                    handleEditUser(user.id);
                                                 }}>
                                                 <i class="bi bi-pencil-square"></i></button></td>
                                             <td><button type="button" className="btn btn-danger"><i class="bi bi-trash"></i></button></td>
-                                        </tr>
+                                        </tr> */}
                                     </tbody>
                                 </table>
                             </div>

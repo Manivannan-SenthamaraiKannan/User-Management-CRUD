@@ -1,23 +1,14 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { useState } from "react";
 import { Link } from 'react-router-dom'
 
 const EditUser = (props) => {
+    console.log(props.editUser)
     const pageHeading = "Edit User";
 
-    // const [state, setState] = useState();
-    const [userDetails, setUserDetails] = useState();
+    const handleUserDetails = () => {
 
-    const handleUserDetails = (value) => {
-        return setUserDetails((details) => {
-            return { ...userDetails, ...value }
-        })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(userDetails);
-    }
     return (
         <div className='sb-nav-fixed'>
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -64,7 +55,7 @@ const EditUser = (props) => {
                                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <Link class="nav-link" to="/user">Users</Link>
-                                        <Link class="nav-link" to="/createuser">Create-users</Link>
+                                        <Link class="nav-link" to="/createuser/:id">Create-users</Link>
                                         <Link class="nav-link" to="/edituser">Edit-users</Link>
                                     </nav>
                                 </div>
@@ -102,10 +93,10 @@ const EditUser = (props) => {
                             </div>
                             {/* Edit User Content */}
                             <div className="container">
-                                <form onSubmit={handleSubmit}>
-                                    <div class="mb-3">
+                                <form>
+                                    {/* <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Name</label>
-                                        <input type="text" class="form-control" defaultValue={props.editUser.name}
+                                        <input type="text" class="form-control" defaultValue={
                                             onChange={(e) => { handleUserDetails({ name: e.target.value }) }} />
                                     </div>
                                     <div class="mb-3">
@@ -123,7 +114,7 @@ const EditUser = (props) => {
                                         <input type="text" class="form-control" defaultValue={props.editUser.country}
                                             onChange={(e) => { handleUserDetails({ country: e.target.value }) }} />
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button> */}
                                 </form>
                             </div>
                         </div>

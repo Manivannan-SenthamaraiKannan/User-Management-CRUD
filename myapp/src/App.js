@@ -18,6 +18,7 @@ function App() {
     PHONE: "123456789",
   });
 
+  // create-user
   const [createUser, setCreateUser] = useState();
 
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/user' element={<Users setEditUser={setEditUser} createUser={createUser} />} />
           <Route path='/edituser' element={<EditUser editUser={edituser} />} />
-          <Route path='/createuser' element={<CreateUser setCreateUser={setCreateUser} />} />
+          <Route path='/createuser/:id' element={<CreateUser setCreateUser={setCreateUser} />} />
         </Routes>
       </div>
     </Router>
