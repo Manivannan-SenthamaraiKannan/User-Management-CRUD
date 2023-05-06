@@ -43,7 +43,7 @@ const Users = (props) => {
         <div className='sb-nav-fixed'>
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
                 {/* <!-- Navbar Brand--> */}
-                <Link class="navbar-brand ps-3" to="/">Start Bootstrap</Link>
+                <Link class="navbar-brand ps-3" to="/">User Management</Link>
                 {/* <!-- Sidebar Toggle--> */}
                 <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 navbar-toggler-icon" id="sidebarToggle" href="#!"></button>
                 {/* <!-- Navbar Search--> */}
@@ -85,7 +85,7 @@ const Users = (props) => {
                                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <Link class="nav-link" to="/user">Users</Link>
-                                        <Link class="nav-link" to="/createuser/:id">Create-users</Link>
+                                        <Link class="nav-link" to="/createuser/">Create-users</Link>
                                         <Link class="nav-link" to="/edituser">Edit-users</Link>
                                     </nav>
                                 </div>
@@ -177,14 +177,6 @@ const Users = (props) => {
                         </div>
                     </main>
                     {/* Enf of page content */}
-                    <footer class="py-3 bg-light mt-auto">
-                        <div class="container-fluid px-3">
-                            <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                                <div class="text-muted">Privacy Policy. Your Website 2023</div>
-                            </div>
-                        </div>
-                    </footer>
                 </div>
             </div>
         </div>

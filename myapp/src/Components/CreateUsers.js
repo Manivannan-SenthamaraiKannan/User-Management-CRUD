@@ -27,7 +27,7 @@ const CreateUser = (props) => {
         <div className='sb-nav-fixed'>
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
                 {/* <!-- Navbar Brand--> */}
-                <Link class="navbar-brand ps-3" to="/">Start Bootstrap</Link>
+                <Link class="navbar-brand ps-3" to="/">User Management</Link>
                 {/* <!-- Sidebar Toggle--> */}
                 <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 navbar-toggler-icon" id="sidebarToggle" href="#!"></button>
                 {/* <!-- Navbar Search--> */}

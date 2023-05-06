@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
 import Register from './Pages/Register';
-import Dashboard from './Dashboard';
+// import Dashboard from './Dashboard';
 import Users from './Components/Users';
 import EditUser from './Components/EditUsers';
 import CreateUser from './Components/CreateUsers';
@@ -21,7 +21,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path='/' element={<Dashboard />} />
+          <Route path='/' element={<Users />} />
           <Route path='/login' element={<Login />} />
           <Route path='/password' element={<ForgotPassword />} />
           <Route path='/register' element={<Register />} />
