@@ -1,20 +1,24 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link, useNavigate } from 'react-router-dom';
-// import { useState } from "react";
+import { useState } from "react";
+import axios from "axios";
 import '../Assets/Styles/Users.css';
 
 const CreateUser = (props) => {
     const pageHeading = "Create New User";
+    const API = "https://6452fa51e9ac46cedf1afd61.mockapi.io"
+    const [createUser, setCreateUser] = useState();
     const navigate = useNavigate();
 
+
     const handleUser = (value) => {
-        return props.setCreateUser((detail) => {
+        return setCreateUser((detail) => {
             return { ...detail, ...value }
         })
     }
 
-    const submitHandeller = (e) => {
-        e.preventDefault();
+    const submitHandeller = () => {
+        axios.post(`${API}/user/`, createUser)
         navigate('/user')
     }
 
@@ -103,24 +107,20 @@ const CreateUser = (props) => {
                             </div>
                             {/* Create-User Content */}
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <form>
+                                <form onSubmit={submitHandeller}>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label" >Name</label>
                                         <input type="text" class="form-control" onChange={(e) => { handleUser({ name: e.target.value }) }} />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Phone</label>
-                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ phone: e.target.value }) }} />
+                                        <label for="exampleInputPassword1" class="form-label">Email</label>
+                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ email: e.target.value }) }} />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label" >Region</label>
-                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ region: e.target.value }) }} />
+                                        <label for="exampleInputPassword1" class="form-label" >Age</label>
+                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ age: e.target.value }) }} />
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label" >Country</label>
-                                        <input type="text" class="form-control" onChange={(e) => { handleUser({ country: e.target.value }) }} />
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" onClick={submitHandeller}>Submit</button>
+                                    <button type="submit" class="btn btn-primary" >Submit</button>
                                 </form>
                             </div>
                         </div>

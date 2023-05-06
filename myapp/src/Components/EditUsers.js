@@ -1,29 +1,38 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from 'axios'
 
-const EditUser = ({editUser}) => {
-    console.log(editUser)
+const EditUser = ({ editUser, props }) => {
     const pageHeading = "Edit User";
-    const [editDetail, setEditDetail] = useState({});
+    const [editDetail, setEditDetail] = useState([]);
+    const [input, setInput] = useState([
+    ]);
+    const navigate = useNavigate();
     const API = "https://6452fa51e9ac46cedf1afd61.mockapi.io"
 
     useEffect(() => {
         getUsersById();
-    }, []);
+    },);
 
     const getUsersById = () => {
-        axios.get(`${API}/user` + parseInt(editUser)).then((res) => {
+        axios.get(`${API}/user/` + editUser).then((res) => {
             if (res.status === 401) {
                 console.log("Data Not Found");
             }
-            console.log(res.data);
+            setEditDetail(res.data);
         });
     };
 
-    const handleUserDetails = () =>{
+    const handleInput = (value) => {
+        return setInput(details => {
+            return { ...details, ...value }
+        })
+    }
 
+    const handleSubmit = () => {
+        axios.put(`${API}/user/` + editUser, input)
+        navigate('/user')
     }
 
     return (
@@ -72,7 +81,7 @@ const EditUser = ({editUser}) => {
                                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <Link class="nav-link" to="/user">Users</Link>
-                                        <Link class="nav-link" to="/createuser/:id">Create-users</Link>
+                                        <Link class="nav-link" to="/createuser/">Create-users</Link>
                                         <Link class="nav-link" to="/edituser">Edit-users</Link>
                                     </nav>
                                 </div>
@@ -110,38 +119,29 @@ const EditUser = ({editUser}) => {
                             </div>
                             {/* Edit User Content */}
                             <div className="container">
-                                {/* {
-                                    editDetail.map((data) => {
-                                        return (
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label">ID</label>
-                                                    <input type="text" class="form-control" defaultValue={ data.id} disabled/>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label" >Image</label>
-                                                    <input type="text" class="form-control" defaultValue={data.image} disabled />
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label" >Name</label>
-                                                    <input type="text" class="form-control" defaultValue={data.name}
-                                                        onChange={(e) => { handleUserDetails({ name: e.target.value }) }} />
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label" >Email</label>
-                                                    <input type="text" class="form-control" defaultValue={data.email}
-                                                        onChange={(e) => { handleUserDetails({ Email: e.target.value }) }} />
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label" >Age</label>
-                                                    <input type="text" class="form-control" defaultValue={data.age}
-                                                        onChange={(e) => { handleUserDetails({ age: e.target.value }) }} />
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
-                                            )                                        
-                                    })
-                                } */}
+                                <form onSubmit={handleSubmit}>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">ID</label>
+                                        <input type="text" class="form-control" defaultValue={editDetail.id} on disabled />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Name</label>
+                                        <input type="text" class="form-control" defaultValue={editDetail.name}
+                                            onChange={(e) => handleInput({ name: e.target.value })} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Email</label>
+                                        <input type="text" class="form-control" defaultValue={editDetail.email}
+                                            onChange={(e) => handleInput({ email: e.target.value })} />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label" >Age</label>
+                                        <input type="text" class="form-control" defaultValue={editDetail.age}
+                                            onChange={(e) => handleInput({ age: e.target.value })} />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+
                             </div>
                         </div>
                     </main>

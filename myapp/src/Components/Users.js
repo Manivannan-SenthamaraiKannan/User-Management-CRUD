@@ -13,10 +13,10 @@ const Users = (props) => {
 
     useEffect(() => {
         getUsers();
-    }, []);
+    });
 
-    const getUsers = () => {
-        axios.get(`${API}/user`).then((res) => {
+    const getUsers = async () => {
+        await axios.get(`${API}/user`).then((res) => {
             if (res.status === 401) {
                 console.log("Data Not Found");
             }
@@ -36,6 +36,7 @@ const Users = (props) => {
             }
         });
     };
+
 
 
     return (
@@ -121,7 +122,7 @@ const Users = (props) => {
                             </div>
                             {/* Create user */}
                             <div className="d-flex justify-content-end align-items-center createuser">
-                                <Link to='/createuser/:id' >
+                                <Link to='/createuser/' >
                                     <button type="button" className="btn btn-primary"><i class="bi bi-plus"></i> Create User</button>
                                 </Link>
                             </div>
